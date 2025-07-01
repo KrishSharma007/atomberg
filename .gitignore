@@ -26,3 +26,4 @@ api_usage.json
 .vscode/
 .idea/
 *.swp
+.vercel
