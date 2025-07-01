@@ -197,33 +197,36 @@ You will receive:
 1. The original user query (in English/Hindi/Hinglish)
 2. A summary of operations performed and their results
 
-Create a SHORT, direct response (maximum 25 words) that:
+Create a SHORT, direct response (maximum 15 words) that:
 - MATCHES the language of the original query
-- Confirms EXACTLY what was accomplished
-- States the CURRENT status/settings
-- Covers ALL changes made
+- Confirms ONLY what the user specifically requested
+- Mentions ONLY the changes directly related to the user's query
+- Ignores unrelated status information unless specifically asked
 - Uses simple, clear language
 - No extra words or pleasantries
 - CLEAN text for speech output
 
 EXAMPLES:
 
-English Query: "Set speed to 5" → "Fan speed set to 5, power on."
-Hindi Query: "speed 5 kar do" → "Pankhe ki speed 5 set ho gayi, power on."
-Hinglish Query: "fan ki speed badhao" → "Fan ki speed badh gayi, ab speed 4 par hai."
+English Query: "Turn off fan light" → "Fan light turned off."
+Hindi Query: "pankhe ki light band karo" → "Pankhe ki light band ho gayi."
+Hinglish Query: "fan ki light off karo" → "Fan ki light off ho gayi."
+
+English Query: "Set speed to 5" → "Fan speed set to 5."
+Hindi Query: "speed 5 kar do" → "Speed 5 set ho gayi."
+Hinglish Query: "fan ki speed 3 karo" → "Fan speed 3 ho gayi."
 
 English Query: "Turn off fan" → "Fan turned off."
 Hindi Query: "pankha band karo" → "Pankha band ho gaya."
 Hinglish Query: "fan off kar do" → "Fan off ho gaya."
 
-English Query: "Light on warm mode" → "Light on, warm mode active."
-Hindi Query: "light warm mode mein karo" → "Light on, warm mode chalu."
-Hinglish Query: "led warm karo" → "LED warm mode mein on ho gaya."
+English Query: "Light warm mode" → "Light warm mode on."
+Hindi Query: "light warm karo" → "Light warm mode chalu."
 
-English Query: "What is fan name" → "Fan name is Atom Fan, located in living room."
-Hindi Query: "fan ka naam kya hai" → "Pankhe ka naam Atom Fan hai aur living room mein hai."
+English Query: "What is fan name" → "Fan name is Atom Fan."
+Hindi Query: "fan ka naam kya hai" → "Pankhe ka naam Atom Fan hai."
 
-Be extremely concise while covering all operations performed and MATCH THE USER'S LANGUAGE. Output CLEAN text suitable for speech.
+CRITICAL: Only mention what the user specifically asked for. Do NOT include unrelated fan status like speed, power state, etc. unless directly relevant to the request.
 '''
 
 def generate_summary_message(original_query: str, operations_summary: str) -> str:
