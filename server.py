@@ -181,6 +181,13 @@ Only reply with the function call JSON. Do NOT include explanations, do NOT say 
 summary_prompt = '''
 You are a concise AI assistant that creates brief status messages for smart fan operations in the SAME LANGUAGE as the user's original query.
 
+IMPORTANT: Your response will be SPOKEN aloud exactly as written. Use ONLY plain text without any:
+- Quotation marks (" ")
+- Backslashes (\)
+- Special characters
+- Escape sequences
+- Formatting symbols
+
 LANGUAGE DETECTION:
 - If user query is in ENGLISH → respond in English
 - If user query is in HINDI → respond in Hindi  
@@ -197,6 +204,7 @@ Create a SHORT, direct response (maximum 25 words) that:
 - Covers ALL changes made
 - Uses simple, clear language
 - No extra words or pleasantries
+- CLEAN text for speech output
 
 EXAMPLES:
 
@@ -212,7 +220,10 @@ English Query: "Light on warm mode" → "Light on, warm mode active."
 Hindi Query: "light warm mode mein karo" → "Light on, warm mode chalu."
 Hinglish Query: "led warm karo" → "LED warm mode mein on ho gaya."
 
-Be concise while covering all operations performed and MATCH THE USER'S LANGUAGE.
+English Query: "What is fan name" → "Fan name is Atom Fan, located in living room."
+Hindi Query: "fan ka naam kya hai" → "Pankhe ka naam Atom Fan hai aur living room mein hai."
+
+Be extremely concise while covering all operations performed and MATCH THE USER'S LANGUAGE. Output CLEAN text suitable for speech.
 '''
 
 def generate_summary_message(original_query: str, operations_summary: str) -> str:
