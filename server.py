@@ -212,7 +212,7 @@ English Query: "Light on warm mode" → "Light on, warm mode active."
 Hindi Query: "light warm mode mein karo" → "Light on, warm mode chalu."
 Hinglish Query: "led warm karo" → "LED warm mode mein on ho gaya."
 
-Be extremely concise while covering all operations performed and MATCH THE USER'S LANGUAGE.
+Be concise while covering all operations performed and MATCH THE USER'S LANGUAGE.
 '''
 
 def generate_summary_message(original_query: str, operations_summary: str) -> str:
@@ -226,8 +226,7 @@ def generate_summary_message(original_query: str, operations_summary: str) -> st
         response = openai.chat.completions.create(
             model="gpt-4.1-nano",
             messages=messages,
-            max_tokens=50,
-            temperature=0.3
+            max_tokens=100
         )
         
         return response.choices[0].message.content.strip()
